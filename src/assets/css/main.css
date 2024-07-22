@@ -1,0 +1,22 @@
+:root {
+  --primary-color: #F2E7D5;
+  --secondary-color: #6c757d;
+  --success-color: #28a745;
+  --error-color: #dc3545;
+  --background-color: #212121;
+  
+  --primary-font: 'Helvetica', 'Arial', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--primary-font);
+  color: var(--primary-color);
+}
+
+body {
+  background-color: var(--background-color);
+  overflow-x: hidden;
+}
