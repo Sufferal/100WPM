@@ -1,3 +1,5 @@
+const { rules } = require("eslint-config-prettier");
+
 /* eslint-env node */
 module.exports = {
   root: true,
@@ -9,4 +11,7 @@ module.exports = {
   parserOptions: {
     ecmaVersion: "latest",
   },
+  rules: {
+    'vue/multi-word-component-names': 'off', 
+  }
 };
