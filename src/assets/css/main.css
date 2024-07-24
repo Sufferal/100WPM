@@ -20,3 +20,11 @@ body {
   background-color: var(--background-color);
   overflow-x: hidden;
 }
+
+.text-correct {
+  color: var(--success-color);
+}
+
+.text-error {
+  color: var(--error-color);
+}
