@@ -28,6 +28,6 @@ function getClass(index) {
 
 <style scoped>
 #currentWord {
-  font-size: 4rem;
+  font-size: 3rem;
 }
 </style>
