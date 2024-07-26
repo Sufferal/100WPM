@@ -4,6 +4,7 @@
   --success-color: #28a745;
   --error-color: #dc3545;
   --background-color: #212121;
+  --caret-color: #E9C46A;
   
   --primary-font: 'Helvetica', 'Arial', sans-serif;
 }
@@ -19,6 +20,23 @@
 body {
   background-color: var(--background-color);
   overflow-x: hidden;
+}
+
+.text-caret::after,
+.text-caret-first::before {
+  content: '';
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 2.5rem;
+  top: 3px;
+  width: 3px;
+  background-color: var(--caret-color);
+}
+
+.text-caret-first::before {
+  right: 3px;
 }
 
 .text-correct {
