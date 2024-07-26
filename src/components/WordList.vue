@@ -5,7 +5,7 @@ import WordItem from "./WordItem.vue";
 const allWords = ref([]);
 const words = ref([]);
 const typedLetters = ref([]);
-let wordIndex = 0; // Default to the first word
+const currentWordIndex = ref(0);
 
 const fetchWords = async () => {
   const response = await fetch("/src/assets/words.txt");
@@ -28,35 +28,37 @@ const handleKeyPress = (key) => {
   if (key === " ") {
     // Only move to the next word if the current word is fully typed
     if (
-      typedLetters.value[wordIndex].length === words.value[wordIndex].length &&
-      wordIndex < words.value.length - 1
+      typedLetters.value[currentWordIndex.value].length ===
+        words.value[currentWordIndex.value].length &&
+      currentWordIndex.value < words.value.length - 1
     ) {
-      wordIndex++;
+      currentWordIndex.value++;
     }
   } else if (
-    typedLetters.value[wordIndex].length < words.value[wordIndex].length
+    typedLetters.value[currentWordIndex.value].length <
+    words.value[currentWordIndex.value].length
   ) {
-    typedLetters.value[wordIndex].push(key);
+    typedLetters.value[currentWordIndex.value].push(key);
   }
 };
 
 const handleBackspace = (e) => {
   // Handle Ctrl + Backspace to delete all letters of the current word
   if (e.ctrlKey && e.key === "Backspace") {
-    typedLetters.value[wordIndex] = [];
+    typedLetters.value[currentWordIndex.value] = [];
     return;
   }
 
   // Handle backspace to delete the last letter of the last word
   if (e.key === "Backspace") {
-    typedLetters.value[wordIndex].pop();
+    typedLetters.value[currentWordIndex.value].pop();
     return;
   }
 };
 
 const isKeyValid = (e) => {
-  // Ignore if the key is not a letter or Space
-  if (!e.key.match(/^[a-zA-Z]$/) && e.key !== " ") {
+  // Ignore if the key is not a letter or Space or Dash
+  if (!e.key.match(/^[a-zA-Z]$/) && e.key !== " " && e.key !== "-") {
     return false;
   }
 
@@ -90,6 +92,8 @@ onBeforeUnmount(() => {
       :key="index"
       :name="word"
       :typedLetters="typedLetters[index]"
+      :currentWordIndex="currentWordIndex"
+      :wordIndex="index"
     />
   </div>
 </template>
