@@ -4,7 +4,7 @@
   --success-color: #28a745;
   --error-color: #dc3545;
   --background-color: #212121;
-  --caret-color: #E9C46A;
+  --highlight-color: #E9C46A;
   
   --primary-font: 'Helvetica', 'Arial', sans-serif;
 }
@@ -32,7 +32,7 @@ body {
   height: 2.5rem;
   top: 3px;
   width: 3px;
-  background-color: var(--caret-color);
+  background-color: var(--highlight-color);
 }
 
 .text-caret-first::before {
@@ -46,3 +46,7 @@ body {
 .text-error {
   color: var(--error-color);
 }
+
+.text-highlight {
+  color: var(--highlight-color);
+} 
