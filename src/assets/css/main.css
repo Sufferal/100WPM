@@ -43,10 +43,15 @@ body {
   color: var(--success-color);
 }
 
-.text-error {
+.text-wrong {
   color: var(--error-color);
 }
 
 .text-highlight {
   color: var(--highlight-color);
 } 
+
+.text-finish {
+  font-style: italic;
+  text-decoration: line-through;
+}
