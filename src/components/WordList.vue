@@ -11,6 +11,7 @@ const allWords = ref([]);
 const words = ref([]);
 const typedLetters = ref([]);
 const currentWordIndex = ref(0);
+const isRoundFinished = ref(false);
 
 const fetchWords = async () => {
   const response = await fetch("/src/assets/words.txt");
@@ -86,11 +87,12 @@ const handleKeyPress = (key) => {
       document
         .getElementById("correctWords")
         .classList.remove("text-highlight");
-      document.getElementById("correctWords").classList.add("text-error");
+      document.getElementById("correctWords").classList.add("text-wrong");
     }
-  }
 
-  emit("updateTypedLetters", typedLetters.value);
+    isRoundFinished.value = true;
+    emit("updateTypedLetters", typedLetters.value);
+  }
 };
 
 const handleBackspace = (e) => {
@@ -155,6 +157,7 @@ onBeforeUnmount(() => {
       :typedLetters="typedLetters[index]"
       :currentWordIndex="currentWordIndex"
       :wordIndex="index"
+      :isRoundFinished="isRoundFinished"
     />
   </div>
 </template>
