@@ -98,8 +98,9 @@ const handleKeyPress = (key) => {
 const handleBackspace = (e) => {
   // Prevent backspace if the current word is fully typed
   if (
+    currentWordIndex.value === words.value.length - 1 &&
     typedLetters.value[currentWordIndex.value].length ===
-    words.value[currentWordIndex.value].length
+      words.value[currentWordIndex.value].length
   ) {
     return;
   }
